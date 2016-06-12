@@ -142,26 +142,6 @@
   </entry>
   
   <entry>
-    <title>使用React Native一年后的体会</title>
-    <link href="http://www.dobest.me/blog/2015/10/16/%E4%BD%BF%E7%94%A8React%20Native%E4%B8%80%E5%B9%B4%E5%90%8E%E7%9A%84%E4%BD%93%E4%BC%9A/"/>
-    <id>http://www.dobest.me/blog/2015/10/16/使用React Native一年后的体会/</id>
-    <published>2015-10-15T16:00:00.000Z</published>
-    <updated>2016-06-12T09:13:45.000Z</updated>
-    
-    <content type="html">&lt;p&gt;在这篇文章中，我假设你已经掌握了React Native的基础知识，并且有兴趣了解JavaScript和本地通信的内部工作原理。&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在这篇文章中，我假设你已经掌握了React Native的基础知识，并且有兴趣了解JavaScript和本地通信的内部工作原理。&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>React Native模块桥接详解</title>
     <link href="http://www.dobest.me/blog/2015/10/16/React%20Native%E6%A8%A1%E5%9D%97%E6%A1%A5%E6%8E%A5%E8%AF%A6%E8%A7%A3/"/>
     <id>http://www.dobest.me/blog/2015/10/16/React Native模块桥接详解/</id>
