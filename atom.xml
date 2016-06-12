@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Eric&#39;s Blog</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.dobest.me/"/>
+  <updated>2016-06-12T05:50:30.000Z</updated>
+  <id>http://www.dobest.me/</id>
+  
+  <author>
+    <name>Eric Wong</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://www.dobest.me/2016/06/12/hello-world/"/>
+    <id>http://www.dobest.me/2016/06/12/hello-world/</id>
+    <published>2016-06-12T03:45:31.000Z</published>
+    <updated>2016-06-12T05:50:30.000Z</updated>
+    
+    <content type="html">&lt;p&gt;更换博客为Hexo，有时间、有想法尽量写点东西下来，地址不变。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;更换博客为Hexo，有时间、有想法尽量写点东西下来，地址不变。&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
