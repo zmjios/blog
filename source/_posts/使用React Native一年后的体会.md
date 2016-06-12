@@ -7,7 +7,7 @@ from: https://discord.engineering/using-react-native-one-year-later-91fd5e949933
 
 当我在面试[Discord](https://discordapp.com/)的时候，技术主管Stanislav跟我说：
 
-> [React Native](https://facebook.github.io/react-native/)代表着未来。等它一发布，我们就会用它从新构建iOS应用。
+> [React Native](https://facebook.github.io/react-native/)代表着未来。等它一发布，我们就会用它从零构建iOS应用。
 
 作为一名原生iOS开发者，基于先前使用PhoneGap的经验，我非常怀疑使用Web技术构建移动应用的这种方式。但是当我学习并使用React Native一段时间之后，我非常庆幸我们做了这个决定。
 
@@ -53,9 +53,9 @@ React Native让开发工作更简洁，使得开发者可以专注于每个新�
 
 ## 社区
 
-React Native项目每**两周**会发布一个新版本，其中包含一些新的特性以及修复的bug。这有利有弊，相比于iOS几个月的稳定版本的发布，新的代码需要额外的时间进行升级，尤其是生产环境中的应用。因此，这也是到目前为止我们fork的React Native仓库只有四次主要升级的原因。
+React Native项目每**两周**会发布一个新版本，其中包含一些新的特性以及修复的bug。这有利有弊，好比iOS几个月的稳定版本的发布，新的代码需要额外的时间进行升级，尤其是生产环境中的应用。因此，这也是到目前为止我们fork的React Native仓库只有四次主要升级的原因。
 
-由于React Native还不太成熟，资源有限，也不完整。但随着它越来越受欢迎，在不久之后一定能赶上其他成熟的技术。下面列出了一些实用的资源，我也经常在它的仓库上提问和获取最新的信息：
+由于React Native还不太成熟，资源有限，也不完整。但随着它越来越流行，在不久之后一定能赶上其他成熟的技术。下面列出了一些实用的资源，我也经常在它的仓库上提问和获取最新的信息：
 
 - Reactiflux上的[#react-native](https://discord.gg/0ZcbPKXt5bWVQmld)。
 
