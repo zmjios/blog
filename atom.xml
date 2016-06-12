@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dobest.me/"/>
-  <updated>2016-06-12T08:11:18.000Z</updated>
+  <updated>2016-06-12T16:09:00.000Z</updated>
   <id>http://www.dobest.me/</id>
   
   <author>
@@ -14,6 +14,73 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用React Native一年后的感受</title>
+    <link href="http://www.dobest.me/blog/2016/06/12/%E4%BD%BF%E7%94%A8React%20Native%E4%B8%80%E5%B9%B4%E5%90%8E%E7%9A%84%E4%BD%93%E4%BC%9A/"/>
+    <id>http://www.dobest.me/blog/2016/06/12/使用React Native一年后的体会/</id>
+    <published>2016-06-11T16:00:00.000Z</published>
+    <updated>2016-06-12T16:09:00.000Z</updated>
+    
+    <content type="html">&lt;p&gt;当我在面试&lt;a href=&quot;https://discordapp.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Discord&lt;/a&gt;的时候，技术主管Stanislav跟我说：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://facebook.github.io/react-native/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;React Native&lt;/a&gt;代表着未来。等它一发布，我们就会用它从新构建iOS应用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;作为一名原生iOS开发者，基于先前使用PhoneGap的经验，我非常怀疑使用Web技术构建移动应用的这种方式。但是当我学习并使用React Native一段时间之后，我非常庆幸我们做了这个决定。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;开发效率&quot;&gt;&lt;a href=&quot;#开发效率&quot; class=&quot;headerlink&quot; title=&quot;开发效率&quot;&gt;&lt;/a&gt;开发效率&lt;/h2&gt;&lt;p&gt;虽然我们的iOS“团队”只有我自己一个人，但是iOS应用开发依然可以赶上Web和桌面应用开发闪电般的速度。Apple公司已经允许开发者使用&lt;code&gt;JavaScriptCore&lt;/code&gt;进行应用的升级，而无需等待App Store的审核流程。这对于那些缺乏专业的iOS QA（质量保障）团队的小公司来说是非常便利的，因为iOS团队可以在发布新功能之后进行热更新。&lt;/p&gt;
+&lt;p&gt;使用React Native一年之后，我们的iOS开发周期明显变快了，这得益于很高的开发效率。比如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;基于现有的前端架构，我们在两周之内就发布了V1.0的版本。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;相比于&lt;code&gt;Auto Layout&lt;/code&gt;，基于&lt;a href=&quot;https://css-tricks.com/snippets/css/a-guide-to-flexbox/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Flexbox&lt;/a&gt;的样式可以节省一半的代码，并且更容易理解。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用Flux设计模式，iOS和Web应用共享了&lt;code&gt;store&lt;/code&gt;和&lt;code&gt;action&lt;/code&gt;的98%的代码。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;性能&quot;&gt;&lt;a href=&quot;#性能&quot; class=&quot;headerlink&quot; title=&quot;性能&quot;&gt;&lt;/a&gt;性能&lt;/h2&gt;&lt;p&gt;React Native在后台线程运行JavaScript并发送极小的代码到主线程中。事实证明，React Native相比于Objective-C或Swift编写的原生iOS应用来说有一些性能差异！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/discord-perf.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Reactiflux小组的性能演示，该组有超过1.1万个会员 —— UI和JS线程大多数都是60FPS&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;然而，我们当初开始构建iOS应用时发现&lt;strong&gt;聊天滚动视图&lt;/strong&gt;的性能并不令人满意，尤其是一些活跃的聊天分组。于是，我们决定使用&lt;a href=&quot;http://componentkit.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ComponentKit&lt;/a&gt;构建聊天视图并编写必要的桥接代码代替原有的方案。当JS线程在完成一些繁重任务的时候，类库也无法提供原生那样流畅的动画（译注：之前动画是在JS线程执行，&lt;a href=&quot;https://github.com/facebook/react-native/commit/19e2388a76a7792ace166b64b9f1fc4695b62f1f&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;目前有人提交了一份代码&lt;/a&gt;，有望使用原生iOS动画接口），因此我们在抽屉侧滑动画上继续使用&lt;a href=&quot;https://github.com/facebook/pop&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PopAnimation&lt;/a&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注： 作者称该应用仅聊天视图和抽屉动画是原生代码实现的，其他均由React Native实现。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;当React Native Android版本发布时，我们也尝试在Android设备上运行应用，但遗憾的是，我们遇到了一些性能问题，只好暂时放弃。Android开发主管Miguel是这样说的：&lt;/p&gt;
+&lt;div class=&quot;tip&quot;&gt;&lt;br&gt;很遗憾，不同Android设备的性能差异很大，这点明显落后于iOS。我们可以让应用运行地很快，但是性能——尤其是触摸事件，即使在更高端设备上也不能令人满意。并且在早期，由于React Native Android缺乏完善的功能，我们从产品原型过渡到成品应用比iOS花费了更多时间。&lt;br&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;可用性&quot;&gt;&lt;a href=&quot;#可用性&quot; class=&quot;headerlink&quot; title=&quot;可用性&quot;&gt;&lt;/a&gt;可用性&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/img/discord-usability.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;React Native让开发工作更简洁，使得开发者可以专注于每个新版本核心功能的开发。应用内自带的开发者菜单为我节省了大量的时间。&lt;/p&gt;
+&lt;p&gt;其中我最喜欢的一个功能是&lt;code&gt;Show Inspector&lt;/code&gt;（审查工具），它可以即时展现交互视图的层级结构以及被选组件中所有必要的样式信息，这无疑是我用过的最棒的iOS审查工具。&lt;/p&gt;
+&lt;h2 id=&quot;社区&quot;&gt;&lt;a href=&quot;#社区&quot; class=&quot;headerlink&quot; title=&quot;社区&quot;&gt;&lt;/a&gt;社区&lt;/h2&gt;&lt;p&gt;React Native项目每&lt;strong&gt;两周&lt;/strong&gt;会发布一个新版本，其中包含一些新的特性以及修复的bug。这有利有弊，相比于iOS几个月的稳定版本的发布，新的代码需要额外的时间进行升级，尤其是生产环境中的应用。因此，这也是到目前为止我们fork的React Native仓库只有四次主要升级的原因。&lt;/p&gt;
+&lt;p&gt;由于React Native还不太成熟，资源有限，也不完整。但随着它越来越受欢迎，在不久之后一定能赶上其他成熟的技术。下面列出了一些实用的资源，我也经常在它的仓库上提问和获取最新的信息：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Reactiflux上的&lt;a href=&quot;https://discord.gg/0ZcbPKXt5bWVQmld&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;#react-native&lt;/a&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://js.coach/react-native&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;js.coach&lt;/a&gt;—React Native开源组件列表。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/jondot/awesome-react-native&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;awesome-react-native&lt;/a&gt;—大量的React Native文章、教程和示例。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;译注：中文资源：&lt;a href=&quot;https://github.com/reactnativecn/react-native-guide&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;React Native学习指南&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;总的来说，React Native很有潜力，它把我们团队的移动应用开发带上了一个新的水准。像我这样原生的iOS开发者可以很平滑地过渡到React Native，这有些出乎我的意料。同时，它也帮助我扩展职业技能，因为我也可以很轻松地向React编写的Web应用贡献代码了。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;当我在面试&lt;a href=&quot;https://discordapp.com/&quot;&gt;Discord&lt;/a&gt;的时候，技术主管Stanislav跟我说：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://facebook.github.io/react-native/&quot;&gt;React Native&lt;/a&gt;代表着未来。等它一发布，我们就会用它从新构建iOS应用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;作为一名原生iOS开发者，基于先前使用PhoneGap的经验，我非常怀疑使用Web技术构建移动应用的这种方式。但是当我学习并使用React Native一段时间之后，我非常庆幸我们做了这个决定。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>2015年小结</title>
