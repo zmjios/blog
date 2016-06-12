@@ -76,4 +76,7 @@ archive_generator:
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repository: git@github.com:ele828/blog.git
+  branch: gh-pages
+  message: new post
