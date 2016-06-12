@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> JavaScript高级程序设计笔记一 · Eric's Blog</title><meta name="description" content="JavaScript高级程序,JavaScript,笔记"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="http://fonts.useso.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/ele828" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/ele828" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">JavaScript高级程序设计笔记一</h1><div class="post-info">Mar 29, 2015</div><div class="post-content"><p>阅读JavsScript高级程序设计（第三版）中记录一些个人感觉一些容易被忽视的知识点。</p>
+<a id="more"></a>
+<p>JavaScript中可以使用字母，下划线以及$符号作为开头。</p>
+<p>JS中可以省略分号，但是不推荐。使用分号有三个好处:</p>
+<ol>
+<li>避免一些错误;</li>
+<li>增进解析的速度;</li>
+<li>可以通过删除空格来压缩JS代码。</li>
+</ol>
+<p>JS函数中使用var声明的是局部变量，缺省var则是全局变量。但是不推荐使用缺省var的方式来声明全局变量，容易造成混乱。</p>
+<p>Undefined和Null类型是只有一个值的数据类型分别为 undefined和null。</p>
+<p>若强制输出一个未定义的变量，则会产生错误。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> message;</span><br><span class="line">alert(message);  <span class="comment">//"undefined"</span></span><br><span class="line">alert(age);      <span class="comment">//Error</span></span><br></pre></td></tr></table></figure>
+<p>对未声明的变量执行typeof操作符，也返回undefined值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> age;</span><br><span class="line">alert(age);    <span class="comment">//"undefined"</span></span><br><span class="line">alert(mess);   <span class="comment">//"undefined"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="keyword">typeof</span> <span class="literal">null</span>)   <span class="comment">// "object"  原因null表示空对象指针。</span></span><br><span class="line"><span class="literal">undefined</span> 派生于 <span class="literal">null</span>。所以</span><br><span class="line">alert(<span class="literal">null</span> == <span class="literal">undefined</span>);  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>Boolean类型中的字面量true、false与数字无关，并非1和0。</p>
+<p>ECMAScript会不失时机的将伪浮点数值转换成浮点类型累储存，从而节省一半的储存空间。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fNum = <span class="number">1.</span>;     <span class="comment">//为1</span></span><br><span class="line"><span class="keyword">var</span> fNum2 = <span class="number">10.0</span>;  <span class="comment">//为10</span></span><br></pre></td></tr></table></figure>
+<p>JS中浮点数值最高精度为17位小数，该类型采用了IEEE754格式，IEEE754浮点计算有一个通病，即浮点的计算精确度存在一些问题。例如:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">0.1</span>;</span><br><span class="line"><span class="keyword">var</span> b=<span class="number">0.</span> <span class="number">2</span>;</span><br><span class="line">alert(a+b);   <span class="comment">//0.30000000000000004</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>因此不要做这样的判断 if(a+b == 0.3){}</p>
+</blockquote>
+<p>数值的范围为 Number.MIN_VALUE - Number.MAX_VALUE 超出范围则变成 (-Infinity[Number.NEGATIVE_INFINITY] || Infinity[Number.POSITIVE_INFINITY]) 不能进行计算。</p>
+<p>ECMAScript中 任何数除以0 等到的NaN 并不会报错</p>
+<p>NaN 与任何数都不相等，包括本身。 NaN != NaN</p>
+<p>isNaN()会对传入的类型先进行转换成数字之后再进行判断。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">isNaN</span>(<span class="literal">null</span>)  <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">""</span>) <span class="comment">//0</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">"HelloJs"</span>) <span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">null</span>)  <span class="comment">//0</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">undefined</span>) <span class="comment">//NaN</span></span><br><span class="line">=&gt;一元加操作符与<span class="built_in">Number</span>()一致</span><br></pre></td></tr></table></figure>
+<p>ECMAScript中，用单引号和双引号引用字符串效果一致。但是不可以混用。<br>    var lang = “JAVA”<br>    lang = lang + “Script”;</p>
+<blockquote>
+<p>过程是创建一个长度为10的新字符串，然后填充JAVA和SCRIPT。最后删除两个没用的字符串，保留 lang = “JAVAScript”</p>
+</blockquote>
+<p>如果不需要传参的话，ECMAScript中可以省略var obj = new Object()的括号。<br>但是不推荐这样的用法。</p>
+<p>逻辑与是短路操作，即第一个操作数能够决定结果就不会再计算第二个操作数。逻辑或与此类似</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> res = (<span class="literal">true</span> &amp;&amp; undefinedVariable);    <span class="comment">//Error，中断程序</span></span><br><span class="line">alert(res);   <span class="comment">//不会被执行</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">var</span> res = (<span class="literal">false</span> &amp;&amp; undefinedVariable)  <span class="comment">//false</span></span><br><span class="line">alert(res)  <span class="comment">//false</span></span><br><span class="line"><span class="keyword">var</span> myObj = obj || backupObj;</span><br></pre></td></tr></table></figure>
+<p>这种赋值模式，如果第一个变量不为null，返回第一个对象，否则返回第二个对象。</p>
+<p>加法中，如果只有一个操作数是字符串，那么将另一个操作数转换成字符串之后，两个字符串进行拼接.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="string">"5"</span>;</span><br><span class="line">alert(a+b);  <span class="comment">//"55"</span></span><br></pre></td></tr></table></figure>
+<p>如果有三个操作数，其中一个是字符串，则类似：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> mess = <span class="string">"The sum of 5 and 10 is "</span> +  num1 + num2;  <span class="comment">// ...+(num1 + num2); 这样才是得到15</span></span><br><span class="line">alert(mess); <span class="comment">// The sum of 5 and 10 is 510</span></span><br></pre></td></tr></table></figure>
+<p>valueOf偏向于运算，toString偏向于显示。</p>
+<ol>
+<li><p>在进行对象转换时（例如:alert(a)）,将优先调用toString方法，如若没有重写toString将调用valueOf方法，如果两方法都不没有重写，但按Object的toString输出。</p>
+</li>
+<li><p>在进行强转字符串类型时将优先调用toString方法，强转为数字时优先调用valueOf。</p>
+</li>
+<li><p>在有运算操作符的情况下，valueOf的优先级高于toString。</p>
+</li>
+</ol>
+<p>任何一个数与NaN进行关系比较，均为false</p>
+<p><code>NaN != NaN</code></p>
+<p>实际开发用不建议使用with(statement){}语句</p>
+<p>switch语句中使用的是全等操作符</p>
+<p>ECMAScript函数中arguments对象与数组类似（并非Array的实例），可以通过arguments[i]来访问参数。arguments.length来获取传入参数的个数，arguments唯一由传入参数决定，与形式参数无关。并且，可以通过arguments来进行函数的重载,它没有传统意义上的重载方式。<br>return语句可以缺省，如果没用return，默认返回一个undefined<br>如果定义了两个重名的函数，则该名字属于后定义的函数，后定义的函数覆盖了之前定义的函数。</p>
+<blockquote>
+<p>JS中两种数据类型：基本类型值（赋值是复制）和引用类型值（地址的复制）<br>JS中函数的参数传递全部都是按值传递的</p>
+</blockquote>
+</div></article></div></section><footer><div class="paginator"><a href="/blog/2015/03/30/JavaScript高级程序设计笔记二/" class="prev">PREV</a></div><div class="copyright"><p>© 2015 - 2016 <a href="http://www.dobest.me">Eric Wong</a>, unless otherwise noted.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
