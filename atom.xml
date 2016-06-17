@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dobest.me/"/>
-  <updated>2016-06-13T04:43:46.000Z</updated>
+  <updated>2016-06-17T06:18:31.000Z</updated>
   <id>http://www.dobest.me/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android视频流直播</title>
+    <link href="http://www.dobest.me/blog/2016/06/17/Android%E8%A7%86%E9%A2%91%E6%B5%81%E7%9B%B4%E6%92%AD/"/>
+    <id>http://www.dobest.me/blog/2016/06/17/Android视频流直播/</id>
+    <published>2016-06-16T16:00:00.000Z</published>
+    <updated>2016-06-17T06:18:31.000Z</updated>
+    
+    <content type="html">&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>北美实习求职记(一)</title>
+    <link href="http://www.dobest.me/blog/2016/06/16/%E5%8C%97%E7%BE%8E%E5%AE%9E%E4%B9%A0%E6%B1%82%E8%81%8C%E8%AE%B0(%E4%B8%80)/"/>
+    <id>http://www.dobest.me/blog/2016/06/16/北美实习求职记(一)/</id>
+    <published>2016-06-15T16:00:00.000Z</published>
+    <updated>2016-06-17T06:18:37.000Z</updated>
+    
+    <content type="html">&lt;p&gt;待记&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;待记&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>使用React Native一年后的感受</title>
@@ -380,46 +420,6 @@
     <summary type="html">
     
       &lt;p&gt;短暂的两个月实习转眼间就结束了，回想第一天来报到的场景还历历在目。很庆幸能有这样一次宝贵的机会来到阿里，来到FGT这个大家庭同大家一起学习，我想这注定会是一段珍贵难忘的经历。说到总结，在这两个月里自己对业务的了解、团队合作、项目的流程和沟通方面以及个人技术都有很大的收获。&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Android视频流直播</title>
-    <link href="http://www.dobest.me/blog/2015/06/17/Android%E8%A7%86%E9%A2%91%E6%B5%81%E7%9B%B4%E6%92%AD/"/>
-    <id>http://www.dobest.me/blog/2015/06/17/Android视频流直播/</id>
-    <published>2015-06-16T16:00:00.000Z</published>
-    <updated>2016-06-17T06:17:03.000Z</updated>
-    
-    <content type="html">&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>北美实习求职记(一)</title>
-    <link href="http://www.dobest.me/blog/2015/06/16/%E5%8C%97%E7%BE%8E%E5%AE%9E%E4%B9%A0%E6%B1%82%E8%81%8C%E8%AE%B0(%E4%B8%80)/"/>
-    <id>http://www.dobest.me/blog/2015/06/16/北美实习求职记(一)/</id>
-    <published>2015-06-15T16:00:00.000Z</published>
-    <updated>2016-06-17T06:15:37.000Z</updated>
-    
-    <content type="html">&lt;p&gt;待记&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;待记&lt;/p&gt;
     
     </summary>
     
