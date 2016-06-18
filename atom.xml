@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dobest.me/"/>
-  <updated>2016-06-18T07:21:44.000Z</updated>
+  <updated>2016-06-18T07:29:18.000Z</updated>
   <id>http://www.dobest.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.dobest.me/blog/2016/06/17/Android%E5%B1%8F%E5%B9%95%E7%9B%B4%E6%92%AD%E6%96%B9%E6%A1%88/"/>
     <id>http://www.dobest.me/blog/2016/06/17/Android屏幕直播方案/</id>
     <published>2016-06-16T16:00:00.000Z</published>
-    <updated>2016-06-18T07:21:44.000Z</updated>
+    <updated>2016-06-18T07:29:18.000Z</updated>
     
     <content type="html">&lt;p&gt;项目需求是实时同步Android手机屏幕画面至浏览器。这里有两个挑战，一是Android如何在应用内获得屏幕实时视频流，另一个是如何在浏览器上做视频直播。经过一番折腾，确定了如下的实现方案。期间，我们也实现了手机摄像头的直播。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
@@ -55,16 +55,16 @@
 &lt;p&gt;&lt;a href=&quot;https://ffmpeg.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;FFmpeg&lt;/a&gt;是一个大名鼎鼎的音视频转码库，它由C语言实现，因此在Java中，我们需要通过JNI进行调用，这里，我们使用了&lt;strong&gt;JavaCV&lt;sup&gt;1&lt;/sup&gt;&lt;/strong&gt;的FFmpeg转码功能。&lt;/p&gt;
 &lt;div class=&quot;tip&quot;&gt;&lt;br&gt;注意：如果使用JavaCV并采用&lt;code&gt;mpeg1video&lt;/code&gt;格式推流至服务器，切记将声道调为0，&lt;code&gt;recorder.setAudioChannels(0)&lt;/code&gt;，否则视频会残缺不全。&lt;br&gt;&lt;/div&gt;
 
-&lt;p&gt;说到这里，不得不吐槽一下&lt;strong&gt;JavaCV&lt;sup&gt;1&lt;/sup&gt;&lt;/strong&gt;，它没有文档，没有文档是件很可怕的事情，编程基本靠猜。而且它也没有实现FFmpeg的全部功能！！！我们为了把获取到的&lt;strong&gt;RAW H.264&lt;/strong&gt;流数据传给JavaCV费了好大功夫，曾经一度想通过调用C语言函数来完成这项工作，但没有成功！&lt;/p&gt;
+&lt;p&gt;说到这里，不得不吐槽一下&lt;strong&gt;JavaCV&lt;sup&gt;1&lt;/sup&gt;&lt;/strong&gt;，它没有文档，没有文档是件很可怕的事情，编程基本靠猜。而且它也没有实现FFmpeg的全部功能！！！我们为了把获取到的&lt;strong&gt;视频帧&lt;/strong&gt;流数据传给JavaCV费了好大功夫，曾经一度想通过调用C语言函数来完成这项工作，但没有成功！&lt;/p&gt;
 &lt;p&gt;到最后黔驴技穷，只好去项目中开Issue寻求帮助，然而作者表示尚未实现该功能，WTF。好吧，毕竟开源项目，别人也没有义务去做这件事。所以最后也只能自己来解决这个问题了。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/img/javacv-issue.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;废话不多说，既然&lt;strong&gt;JavaCV&lt;sup&gt;1&lt;/sup&gt;&lt;/strong&gt;无法完成这项工作，那么我们只好另辟蹊径。&lt;/p&gt;
 &lt;p&gt;现在，有两种做法。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;自己编写FFmpeg类库。我尝试直接使用CLI接入stream的方式实现实时推流。方法也很简单，只需要在Java中启动&lt;code&gt;FFmpeg&lt;/code&gt;进程，然后pipe输入流，再由&lt;code&gt;FFmpeg&lt;/code&gt;推流至服务器。但实践之后发现一些奇怪的问题，只好作罢。&lt;/li&gt;
-&lt;li&gt;另一个方案就是徒手来处理&lt;strong&gt;RAW H.264&lt;/strong&gt;流，将转码的工作放到服务器端去实现，最后我们使用这个方案成功完成了任务。下面来看看H.264编码：&lt;/li&gt;
+&lt;li&gt;另一个方案就是徒手来处理&lt;strong&gt;视频帧&lt;/strong&gt;数据，将转码的工作放到服务器端去实现，最后我们使用这个方案成功完成了任务。下面来看看H.264编码：&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&quot;H-264编码&quot;&gt;&lt;a href=&quot;#H-264编码&quot; class=&quot;headerlink&quot; title=&quot;H.264编码&quot;&gt;&lt;/a&gt;H.264编码&lt;/h1&gt;&lt;p&gt;众所周知，视频编码格式种类繁多，H.264也是其中一种编码，每一种编码都有其特点和适用场景，更多信息请自行搜索，这里不多做赘述。期间，我们尝试过将上面获取到的&lt;strong&gt;RAW H.264&lt;/strong&gt;数据保存为文件，想研究视频文件为什么会呈现为&lt;strong&gt;绿屏&lt;/strong&gt;的画面。经过翻阅资料和试验我们发现，&lt;strong&gt;H.264&lt;/strong&gt;编码有着特殊的分层结构。&lt;/p&gt;
+&lt;h1 id=&quot;H-264编码&quot;&gt;&lt;a href=&quot;#H-264编码&quot; class=&quot;headerlink&quot; title=&quot;H.264编码&quot;&gt;&lt;/a&gt;H.264编码&lt;/h1&gt;&lt;p&gt;众所周知，视频编码格式种类繁多，H.264也是其中一种编码，每一种编码都有其特点和适用场景，更多信息请自行搜索，这里不多做赘述。期间，我们尝试过将上面获取到的&lt;strong&gt;视频帧&lt;/strong&gt;数据保存为文件，想研究视频文件为什么会呈现为&lt;strong&gt;绿屏&lt;/strong&gt;的画面。经过翻阅资料和试验我们发现，&lt;strong&gt;H.264&lt;/strong&gt;编码有着特殊的分层结构。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;H.264 的功能分为两层：视频编码层(VCL, Video Coding Layer)和网络提取层(NAL, Network Abstraction Layer)。VCL 数据即编码处理的输出，它表示被压缩编码后的视频数据 序列。在 VCL 数据传输或存储之前,这些编码的 VCL 数据，先被映射或封装进 NAL 单元中。每个 NAL 单元包括一个原始字节序列负荷(RBSP, Raw Byte Sequence Payload)、一组对应于视频编码的 NAL 头信息。RBSP 的基本结构是：在原始编码数据的后面填加了结尾比特。一个bit“1”若干比特“0”，以便字节对齐。&lt;/p&gt;
 &lt;/blockquote&gt;
