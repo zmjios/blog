@@ -15,7 +15,7 @@ from: https://discord.engineering/using-react-native-one-year-later-91fd5e949933
 
 ## 开发效率
 
-虽然我们的iOS“团队”只有我自己一个人，但是iOS应用开发依然可以赶上Web和桌面应用开发闪电般的速度。Apple公司已经允许开发者使用`JavaScriptCore`进行应用的升级，而无需等待App Store的审核流程。这对于那些缺乏专业的iOS QA（质量保障）团队的小公司来说是非常便利的，因为iOS团队可以在发布新功能之后进行热更新。
+虽然iOS“团队”只有我自己一个人，但是iOS应用开发依然可以赶上Web和桌面应用开发闪电般的速度。Apple公司已经允许开发者使用`JavaScriptCore`进行应用的升级，而无需等待App Store的审核流程。这对于那些缺乏专业的iOS QA（质量保障）团队的小公司来说是非常便利的，因为iOS团队可以在发布新功能之后进行热更新。
 
 使用React Native一年之后，我们的iOS开发周期明显变快了，这得益于很高的开发效率。比如：
 
@@ -65,6 +65,6 @@ React Native项目每**两周**会发布一个新版本，其中包含一些新�
 
 > 译注：中文资源：[React Native学习指南](https://github.com/reactnativecn/react-native-guide)
 
-总的来说，React Native很有潜力，它把我们团队的移动应用开发带上了一个新的水准。像我这样原生的iOS开发者可以很平滑地过渡到React Native，这有些出乎我的意料。同时，它也帮助我扩展职业技能，因为我也可以很轻松地向React编写的Web应用贡献代码了。
+总的来说，React Native很有潜力，它把我们团队的移动应用开发带上了一个新的台阶。像我这样原生的iOS开发者可以平滑地过渡到React Native，这有些出乎我的意料。同时，它也帮助我扩展职业技能，因为我也可以很轻松地向React编写的Web应用贡献代码了。
 
 
