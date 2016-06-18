@@ -52,7 +52,7 @@
 <p>H.264的SPS和PPS串，包含了初始化H.264解码器所需要的信息参数，包括编码所用的profile，level，图像的宽和高，deblock滤波器等。</p>
 </blockquote>
 <p>然后不断重复以上格式即可输出正确的<strong>H.264</strong>编码的视频流了。这里的SPS和PPS在每一个NAL单元中重复存在，主要是适用于流式传播的场景，设想一下如果流式传播过程中漏掉了开头的SPS和PPS，那么整个视频流将永远无法被正确解码。</p>
-<p>因此我们在实践过程中，SPS和PPS只传递了一次，这样的方式比较适合我们的项目场景，也比较省流量。因此在我们的方案中，格式变为如下形式：</p>
+<p>我们在实践过程中，SPS和PPS只传递了一次，这样的方式比较适合我们的项目场景，也比较省流量。因此在我们的方案中，格式变为如下形式：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0000 0001 + SPS + 0000 0001 + PPS + 0000 0001 + 视频帧（IDR帧）+ 0000 0001 + 视频帧 + ...</span><br></pre></td></tr></table></figure>
 <p>H.264编码比较复杂，我也只是在做项目期间查阅一些资料才有一点大概的了解，然后在项目完成之后才去反思和理解背后的原理。如果要深入学习，可以查阅相关的资料（<strong>H.264视频压缩标准<sup>5</sup></strong>）。</p>
 <p>介绍完<strong>H.264</strong>的基本原理，下面看看Android上具体的实现。其实Android系统的<code>MediaCodec</code>类库已经帮助我们完成了较多的工作，我们只需要在开始录制时（或每一次传输视频帧前）在视频帧之前写入SPS和PPS信息即可。<code>MediaCodec</code>已经默认在数据流（视频帧和SPS、PPS）之前添加了<code>start code</code>(0x01)，我们不需要手动填写。</p>
